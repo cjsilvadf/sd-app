@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs/cert.pem:/etc/nginx/certs/cert.pem:ro
+      - ./certs/key.pem:/etc/nginx/certs/key.pem:ro
+    restart: always
+
+# Estrutura esperada:
+# - src/
+#   - docker-compose.yml
+#   - nginx.conf
+#   - certs/
+#     - cert.pem
+#     - key.pem
+# Exemplo de conteúdo para nginx.conf
+
